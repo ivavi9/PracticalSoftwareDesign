@@ -1,34 +1,26 @@
 package com.practicalsoftwaredesign.designapen;
 abstract public class Pen {
 
-    protected String manufacturer;
-    protected int price;
+    private String manufacturer;
+    private int price;
 
-    protected PenType penType;
-    protected String color;
+    private PenType penType;
+    private String color;
 
+    private WriteBehavior writeBehavior;
 
-    public Pen(String manufacturer, int price, PenType penType, String color) {
-        this.manufacturer = manufacturer;
-        this.price = price;
+    public Pen(PenType penType, WriteBehavior writeBehavior) {
         this.penType = penType;
-        this.color = color;
+        this.writeBehavior = writeBehavior;
     }
 
-    public Pen() {
-    }
-
-    public void writes(){}
-
-    @Override
-    public String toString(){
-        return price+" "+ manufacturer +" "+ color;
+    public void writes(){
+        writeBehavior.write();
     }
 
     public String getManufacturer() {
         return manufacturer;
     }
-
 
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
@@ -56,5 +48,24 @@ abstract public class Pen {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public WriteBehavior getWriteBehavior() {
+        return writeBehavior;
+    }
+
+    public void setWriteBehavior(WriteBehavior writeBehavior) {
+        this.writeBehavior = writeBehavior;
+    }
+
+    @Override
+    public String toString() {
+        return "Pen{" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", price=" + price +
+                ", penType=" + penType +
+                ", color='" + color + '\'' +
+                ", writeBehavior=" + writeBehavior +
+                '}';
     }
 }

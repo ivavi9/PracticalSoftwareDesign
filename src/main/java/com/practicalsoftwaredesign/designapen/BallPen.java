@@ -1,18 +1,16 @@
 package com.practicalsoftwaredesign.designapen;
 public class BallPen extends Pen {
+    private Refill refill;
+    private boolean isRefillable;
 
-    private WriteBehavior writeBehavior;
-
-    public BallPen(String manufacturer, int price, PenType penType, String color, WriteBehavior writeBehavior) {
-        super(manufacturer, price, penType, color);
-        this.writeBehavior = writeBehavior;
+    public BallPen(WriteBehavior writeBehavior) {
+        super( PenType.GELPEN, writeBehavior);
     }
 
-    public BallPen() {
-    }
+    public static class Builder{
+        private Refill refill;
+        private boolean isRefillable;
 
-    @Override
-    public void writes() {
-        writeBehavior.write();
+
     }
 }
